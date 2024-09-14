@@ -13,8 +13,9 @@ use Tests\Feature\FrontApi\FrontApiTestCase;
 
 class LoginTest extends FrontApiTestCase
 {
-    // $this->assertAuthenticated();
     // use RefreshDatabase;
+
+
     /**
      * {@inheritDoc}
      */
@@ -48,8 +49,7 @@ class LoginTest extends FrontApiTestCase
 
    
     /**
-     * Test Case for POST response 
-     * and make sure the response shape
+     * Test Case for POST Logit to test user can login correctly with correct credentials
      *
      * @return void
      */
@@ -90,7 +90,6 @@ class LoginTest extends FrontApiTestCase
         $this->failGuestValidationPost($this->attributes(['password']) );
     }
 
-    /*---------------------------- Fail Cases For Data Missing Validation-------------------------------------------*/
 
    
 }

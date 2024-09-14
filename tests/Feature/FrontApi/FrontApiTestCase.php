@@ -205,22 +205,6 @@ abstract class FrontApiTestCase extends ApiTestCase
         // dd($route, $response);
         // $response->assertStatus(302)->assertRedirect(route($redirectRoute));
         $this->assertDatabaseHas($table, $this->generalAttributes($attributes, $foreignKeys));
-    }   /**
-        * Fail Validation Update request
-        *
-        * @return void
-        */
-    protected function failValidationUpdate($attributes, $route, $table, $uri = '')
-    {
-        // login as Client
-        $user = $this->loginAsClient();
-        $route = $route . $uri;
-        $response = $this->put($route, $attributes, [
-            'Accept' => 'application/json',
-            'Content-type' => 'application/json'
-        ]);
-        $response->assertStatus(422);
-        $this->assertDatabaseMissing($table, $attributes);
-    }
+    }   
 
 }

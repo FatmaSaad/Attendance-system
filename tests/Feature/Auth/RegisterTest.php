@@ -48,11 +48,11 @@ class RegisterTest extends FrontApiTestCase
 
 
     /**
-     * Test Case for POST response 
-     * and make sure the response shape
+     * Test Case for POST register to test user can login correctly with correct credentials
      *
      * @return void
      */
+ 
     public function test_user_can_register_with_correct_credentials()
     {
         $this->successGuestPost($this->attributes(), null, 'users', ['password', 'password_confirmation']);
@@ -81,7 +81,6 @@ class RegisterTest extends FrontApiTestCase
         $this->failGuestValidationPost($this->attributes(['email', 'password_confirmation']), null, null,['password', 'password_confirmation']);
     }
 
-    /*---------------------------- Fail Cases For Data Missing Validation-------------------------------------------*/
 
 
 }

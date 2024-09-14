@@ -14,7 +14,7 @@ class UserTotalAttendanceNotificationTest extends TestCase
 {
     
     /**
-     * A basic feature test example.
+     *  Test Case for sending Notification to all users when call artisan command (app:send-attendance-notifications) successfully
      */
     public function test_send_notification(): void
     {
