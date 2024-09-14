@@ -174,7 +174,7 @@ just call  **POST** [/api/attendance](#Total-Attendance-Hours)
 - to minimise integrations I chose to send these notifications by email.
 - in my case i integrated with [mailtrap](https://mailtrap.io) just to receive my emails
 
-![](public/images/mailtrap.png')
+![](public/images/mailtrap.png)
 
 - don`t forget to run
 
