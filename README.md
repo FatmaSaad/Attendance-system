@@ -21,7 +21,7 @@ total number of hours )
 1-3-2024 then I should receive a Notification about the total number of hours that I
 worked in February )
 
-## specifications
+## Specifications
 
 - Backend Implementation in PHP v8.2, Laravel v11.22 and MySQL v8.0.32
 
@@ -139,7 +139,7 @@ sail artisan migrate:fresh --seed
  This will create the database and insert a few fake records into it.
 
 
-## Start the fun and let's use our attendance system 
+## Let the fun begins with the usage of your attendance system 
 
 ### Sign-in
 - register as a new user using [/api/register](#Sign-in)
