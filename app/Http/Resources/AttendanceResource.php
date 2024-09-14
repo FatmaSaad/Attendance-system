@@ -16,7 +16,7 @@ class AttendanceResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'check_in_date' => Carbon::parse($this->created_at)->format('Y-m-d h:m:s'),
+            'check_in_date' => Carbon::parse($this->created_at)->format('Y-m-h h:m:s'),
             'check_out_date' => $this->when($this->checkout , function () {
                 return Carbon::parse($this->checkout->created_at)->format('Y-m-d h:m:s');
             }),

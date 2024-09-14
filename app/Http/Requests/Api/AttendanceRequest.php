@@ -23,7 +23,7 @@ class AttendanceRequest extends FormRequest
     {
         return [
             'from' => 'date_format:Y-m-d',
-            'to' => 'date_format:Y-m-d|after:'.$this->from,
+            'to' => 'date_format:Y-m-d|after:from',
         ];
     }
 }

@@ -50,7 +50,7 @@ if (!function_exists('getUserAttendanceTotalHours')) {
     }
 
 }
-if (!hoursToTime('differenceInHours')) {
+if (!function_exists('hoursToTime')) {
 
     /**
      * @param $array

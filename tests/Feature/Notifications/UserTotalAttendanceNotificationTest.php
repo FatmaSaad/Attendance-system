@@ -2,19 +2,28 @@
 
 namespace Tests\Feature\Notifications;
 
+use App\Models\User;
+use App\Notifications\UserTotalAttendanceNotification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class UserTotalAttendanceNotificationTest extends TestCase
 {
+    
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+    public function test_send_notification(): void
     {
-        $response = $this->get('/');
+        Notification::fake();
+        Artisan::call('app:send-attendance-notifications');
+        $users = User::all();
+        foreach ($users as $user) {
 
-        $response->assertStatus(200);
+            Notification::assertSentTo($user, UserTotalAttendanceNotification::class);
+        }
     }
 }
