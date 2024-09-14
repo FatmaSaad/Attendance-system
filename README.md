@@ -5,19 +5,19 @@ working hours. The system should allow users to check in and check out multiple 
 calculate total hours worked, and provide statistics on working hours and days. Additionally,
 users should receive notifications with their monthly working stats.
 
-- User should be able to [sign-in](###sign-in) : By his/her ID and Password .
+- User should be able to [sign-in](#sign-in) : By his/her ID and Password .
 
-- User should be able to [check-in](###check-in) : Check-in time will be fetched from the now time , Example ( if Authenticated user check in “2024-1-1 12:33:44” then this time will be saved as check-in time )
+- User should be able to [check-in](#check-in) : Check-in time will be fetched from the now time , Example ( if Authenticated user check in “2024-1-1 12:33:44” then this time will be saved as check-in time )
 
-- User should be able to [check-out](###check-out) : Check-out time will be fetched from the now time , Example ( if Authenticated user check out “2024-1-1 12:33:44” then this time will be saved as check-out time )
+- User should be able to [check-out](#check-out) : Check-out time will be fetched from the now time , Example ( if Authenticated user check out “2024-1-1 12:33:44” then this time will be saved as check-out time )
 
 - User can has multiple check-ins/check-outs per the same day
 
-- User can view the [total number of hours that he worked](###total Attendance Hours) by using from/to date , Example
+- User can view the [total number of hours that he worked](#Total-Attendance-Hours) by using from/to date , Example
 (if Authenticated user entered from 2024-1-1 to 2024-3-13 then he/she can view the
 total number of hours )
 
-- User should receive [Notification](###Notification) at the first day of the month about the total number of hours that he/she worked in the previous month , Example ( let’s assume that today is
+- User should receive [Notification](#Notification) at the first day of the month about the total number of hours that he/she worked in the previous month , Example ( let’s assume that today is
 1-3-2024 then I should receive a Notification about the total number of hours that I
 worked in February )
 
@@ -29,7 +29,7 @@ worked in February )
 
 - Auto-generated Postman collection to test all the APIs using [laravel-api-to-postman](https://github.com/andreaselia/laravel-api-to-postman)
 
- to generate new Postman collection
+***Note*** : to generate new Postman collection
 ```bash
 php artisan export:postman
 
@@ -37,7 +37,7 @@ php artisan export:postman
 
 - All API endpoints documented
 
-- All API endpoints [unit-tested](###unit Test).
+- All API endpoints [unit-tested](#Unit-Test).
 
 
 ## How to use
@@ -97,7 +97,7 @@ Run the database seeder and you're done
 
  php artisan migrate:refresh
     
-### unit Test
+### Unit Test
 
 - you may use the test Artisan command to run all tests.
 
@@ -133,7 +133,7 @@ sail artisan migrate:fresh --seed
 
 ## Start the fun and let's use our attendance system 
 
-### sign-in
+### Sign-in
 - register as a new user using [/api/register]{}
  you need to send your {user_id,name,email,password and password_confirmation}.
 
@@ -145,14 +145,14 @@ user_id = 123
 password = 123456
 
 ```
-### check-in
+### Check-in
 - as an authenticated user you can check in now by calling **GET** [/api/check_in]{}
  your response has  **"status": "In"** as you now attended.
-### check-out
+### Check-out
 - if you need to check out you cal call **GET** [/api/check_out]{}
  so you can respond **"status": "Out"**
                          **"attendance_hours": "02:05:56"**
-### total Attendance Hours
+### Total Attendance Hours
 just call  **POST** [/api/attendance]{}
 - if you sent (from) and (to) parameters in the request body
  you will get your total number of hours that attended during this specific period of time by using from/to date.
