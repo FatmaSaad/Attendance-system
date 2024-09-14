@@ -44,59 +44,67 @@ php artisan export:postman
 Alternative installation is possible without local dependencies relying on [Docker](#Docker). 
 
 Clone the repository
-
- git clone git@github.com:FatmaSaad/attendance-system.git
+```bash
+    git clone git@github.com:FatmaSaad/attendance-system.git
+```
 
 Switch to the repo folder
-
+```bash
  cd attendance-system
+ ```
 Install all the dependencies using composer
-
+```bash
  composer install
-
+```
 Copy the example env file and make the required configuration changes in the .env file
-
+```bash
  cp .env.example .env
-
+```
 Generate a new application key
-
+```bash
  php artisan key:generate
-
+```
 
 Run the database migrations (**Set the database connection in .env before migrating**)
-
+```bash
  php artisan migrate
-
+```
 Start the local development server
 
+```bash
  php artisan serve
-
+```
 You can now access the server at http://localhost:8000
 
 **TL;DR command list**
 
+```bash
  git clone git@github.com:FatmaSaad/Attendance-system.git
  cd attendance-system
  composer install
  cp .env.example .env
  php artisan key:generate
  php artisan jwt:generate 
-    
+
+ ```
 **Make sure you set the correct database connection information before running the migrations** 
 
+```bash
  php artisan migrate
  php artisan serve
-
+```
 ### Database seeding
 
 Run the database seeder and you're done
 
+```bash
  php artisan db:seed
-
+```
 ***Note*** : It's recommended to have a clean database before seeding. You can refresh your migrations at any point to clean the database by running the following command
 
+```bash
  php artisan migrate:refresh
-    
+```  
 ### Unit Test
 
 - you may use the test Artisan command to run all tests.
@@ -104,7 +112,7 @@ Run the database seeder and you're done
 ```bash
 vendor/bin/phpunit --testdox
 ```
-![{{url('/images/tests.png')}}]
+![](public/images/tests.png)
 
 ### Docker
 Use [sail](https://laravel.com/docs/11.x/sail#introduction) which is an interface for interacting with  [Docker](https://www.docker.com/) development environment to install the attendance-system.
@@ -165,7 +173,7 @@ just call  **POST** [/api/attendance]{}
 - automatically you receive a notification at the first day of the month about the total number of hours that you worked in the previous month.
 - to minimise integrations I chose to send these notifications by email.
 - in my case i integrated with [mailtrap](https://mailtrap.io) just to receive my emails ,
-![{{url('/images/mailtrap.png')}}]
+![](public/images/mailtrap.png')]
 
 - don`t forget to run
 
@@ -180,4 +188,4 @@ This command will run in the foreground and invoke the scheduler every minute un
  
 ```
 In the end, you should receive something like that
-![{{url('/images/email.png')}}]
+![](public/images/email.png)
