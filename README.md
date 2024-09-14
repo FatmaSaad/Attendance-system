@@ -1,66 +1,183 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Attendance System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+The goal is to develop a simple attendance system backend that allows users to track their
+working hours. The system should allow users to check in and check out multiple times per day,
+calculate total hours worked, and provide statistics on working hours and days. Additionally,
+users should receive notifications with their monthly working stats.
 
-## About Laravel
+- User should be able to [sign-in](###sign-in) : By his/her ID and Password .
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- User should be able to [check-in](###check-in) : Check-in time will be fetched from the now time , Example ( if Authenticated user check in “2024-1-1 12:33:44” then this time will be saved as check-in time )
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- User should be able to [check-out](###check-out) : Check-out time will be fetched from the now time , Example ( if Authenticated user check out “2024-1-1 12:33:44” then this time will be saved as check-out time )
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- User can has multiple check-ins/check-outs per the same day
 
-## Learning Laravel
+- User can view the [total number of hours that he worked](###total Attendance Hours) by using from/to date , Example
+(if Authenticated user entered from 2024-1-1 to 2024-3-13 then he/she can view the
+total number of hours )
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- User should receive [Notification](###Notification) at the first day of the month about the total number of hours that he/she worked in the previous month , Example ( let’s assume that today is
+1-3-2024 then I should receive a Notification about the total number of hours that I
+worked in February )
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## specifications
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Backend Implementation in PHP v8.2, Laravel v11.22 and MySQL v8.0.32
 
-## Laravel Sponsors
+- Docker setup using [sail](https://laravel.com/docs/11.x/sail#introduction) to containerize the application.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- Auto-generated Postman collection to test all the APIs using [laravel-api-to-postman](https://github.com/andreaselia/laravel-api-to-postman)
 
-### Premium Partners
+ to generate new Postman collection
+```bash
+php artisan export:postman
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```
 
-## Contributing
+- All API endpoints documented
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- All API endpoints [unit-tested](###unit Test).
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## How to use
+Alternative installation is possible without local dependencies relying on [Docker](#Docker). 
 
-## Security Vulnerabilities
+Clone the repository
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+ git clone git@github.com:FatmaSaad/attendance-system.git
 
-## License
+Switch to the repo folder
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+ cd attendance-system
+Install all the dependencies using composer
+
+ composer install
+
+Copy the example env file and make the required configuration changes in the .env file
+
+ cp .env.example .env
+
+Generate a new application key
+
+ php artisan key:generate
+
+
+Run the database migrations (**Set the database connection in .env before migrating**)
+
+ php artisan migrate
+
+Start the local development server
+
+ php artisan serve
+
+You can now access the server at http://localhost:8000
+
+**TL;DR command list**
+
+ git clone git@github.com:FatmaSaad/Attendance-system.git
+ cd attendance-system
+ composer install
+ cp .env.example .env
+ php artisan key:generate
+ php artisan jwt:generate 
+    
+**Make sure you set the correct database connection information before running the migrations** 
+
+ php artisan migrate
+ php artisan serve
+
+### Database seeding
+
+Run the database seeder and you're done
+
+ php artisan db:seed
+
+***Note*** : It's recommended to have a clean database before seeding. You can refresh your migrations at any point to clean the database by running the following command
+
+ php artisan migrate:refresh
+    
+### unit Test
+
+- you may use the test Artisan command to run all tests.
+
+```bash
+vendor/bin/phpunit --testdox
+```
+![{{url('/images/tests.png')}}]
+
+### Docker
+Use [sail](https://laravel.com/docs/11.x/sail#introduction) which is an interface for interacting with  [Docker](https://www.docker.com/) development environment to install the attendance-system.
+
+make sure your docker [installed and running](https://docs.docker.com/engine/install/).
+
+In your terminal, use this command:
+
+```bash
+sail up
+```
+or
+
+```bash
+./vendor/bin/sail up
+```
+This command starts all the Docker containers required for Laravel development environment.
+
+Run 
+
+```bash
+sail artisan migrate:fresh --seed
+```
+ This will create the database and insert a few fake records into it.
+
+
+## Start the fun and let's use our attendance system 
+
+### sign-in
+- register as a new user using [/api/register]{}
+ you need to send your {user_id,name,email,password and password_confirmation}.
+
+- use your user_id and Password to log in using [/api/login]{} 
+    ***Note*** : you can skip this step as there is a user saved by defult. 
+ to use it please use these credentials to log In:
+```bash
+user_id = 123
+password = 123456
+
+```
+### check-in
+- as an authenticated user you can check in now by calling **GET** [/api/check_in]{}
+ your response has  **"status": "In"** as you now attended.
+### check-out
+- if you need to check out you cal call **GET** [/api/check_out]{}
+ so you can respond **"status": "Out"**
+                         **"attendance_hours": "02:05:56"**
+### total Attendance Hours
+just call  **POST** [/api/attendance]{}
+- if you sent (from) and (to) parameters in the request body
+ you will get your total number of hours that attended during this specific period of time by using from/to date.
+
+- if empty request body
+ you will get your total number of hours in general.
+      ***Note*** : you can reach these attended points with dates and attended time for each one just call **GET** [/api/attendance]{}
+      
+### Notification
+- automatically you receive a notification at the first day of the month about the total number of hours that you worked in the previous month.
+- to minimise integrations I chose to send these notifications by email.
+- in my case i integrated with [mailtrap](https://mailtrap.io) just to receive my emails ,
+![{{url('/images/mailtrap.png')}}]
+
+- don`t forget to run
+
+```bash
+php artisan schedule:work
+```
+This command will run in the foreground and invoke the scheduler every minute until you terminate.
+
+ ***Note***  if you want to test it manually just run 
+```bash
+ php artisan app:send-attendance-notifications
+ 
+```
+In the end, you should receive something like that
+![{{url('/images/email.png')}}]
