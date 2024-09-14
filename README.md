@@ -142,10 +142,10 @@ sail artisan migrate:fresh --seed
 ## Start the fun and let's use our attendance system 
 
 ### Sign-in
-- register as a new user using [/api/register]{}
+- register as a new user using [/api/register]()
  you need to send your {user_id,name,email,password and password_confirmation}.
 
-- use your user_id and Password to log in using [/api/login]{} 
+- use your user_id and Password to log in using [/api/login]() 
     ***Note*** : you can skip this step as there is a user saved by defult. 
  to use it please use these credentials to log In:
 ```bash
@@ -154,26 +154,27 @@ password = 123456
 
 ```
 ### Check-in
-- as an authenticated user you can check in now by calling **GET** [/api/check_in]{}
+- as an authenticated user you can check in now by calling **GET** [/api/check_in]()
  your response has  **"status": "In"** as you now attended.
 ### Check-out
-- if you need to check out you cal call **GET** [/api/check_out]{}
+- if you need to check out you cal call **GET** [/api/check_out]()
  so you can respond **"status": "Out"**
                          **"attendance_hours": "02:05:56"**
 ### Total Attendance Hours
-just call  **POST** [/api/attendance]{}
+just call  **POST** [/api/attendance]()
 - if you sent (from) and (to) parameters in the request body
  you will get your total number of hours that attended during this specific period of time by using from/to date.
 
 - if empty request body
  you will get your total number of hours in general.
-      ***Note*** : you can reach these attended points with dates and attended time for each one just call **GET** [/api/attendance]{}
+      ***Note*** : you can reach these attended points with dates and attended time for each one just call **GET** [/api/attendance]()
       
 ### Notification
 - automatically you receive a notification at the first day of the month about the total number of hours that you worked in the previous month.
 - to minimise integrations I chose to send these notifications by email.
-- in my case i integrated with [mailtrap](https://mailtrap.io) just to receive my emails ,
-![](public/images/mailtrap.png')]
+- in my case i integrated with [mailtrap](https://mailtrap.io) just to receive my emails
+
+![](public/images/mailtrap.png')
 
 - don`t forget to run
 
